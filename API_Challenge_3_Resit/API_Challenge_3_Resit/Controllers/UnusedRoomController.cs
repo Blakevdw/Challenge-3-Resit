@@ -9,8 +9,48 @@ using API_Challenge_3_Resit.Models;
 
 namespace API_Challenge_3_Resit.Controllers
 {
-    public class UnusedRoomController : ApiController
-    {
+	public class UnusedRoomController : ApiController
+	{
+		public UnusedRooms Get(string id)
+		{
+			SqlConnection conn;
+			SqlCommand cmd;
+			SqlDataReader rdr;
+			UnusedRooms output = new UnusedRooms();
+			conn = DBconnect.Connect();
+			string qeury = "select * from Room Where RoomCapacity = '" + 0 + "'";
 
-    }
+			try
+			{
+				conn.Open();
+
+				cmd = new SqlCommand(qeury, conn);
+
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read())
+				{
+					output = new UnusedRooms(Convert.ToString((rdr.GetValue(0).ToString())), Convert.ToInt32(rdr.GetValue(1)),
+						Convert.ToInt32(rdr.GetValue(2)));
+				}
+				rdr.Close();
+
+				rdr = cmd.ExecuteReader();
+
+			}
+
+			catch (Exception e)
+			{
+				throw e;
+			}
+			finally
+			{
+				if (conn.State == System.Data.ConnectionState.Open)
+				{
+					conn.Close();
+				}
+			}
+			return output;
+		}
+	}
 }

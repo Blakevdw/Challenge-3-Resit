@@ -170,7 +170,7 @@
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomWComputer.cs" />
-    <Compile Include="Models\UnusedRoom.cs" />
+    <Compile Include="Models\UnusedRooms.cs" />
     <Compile Include="Models\UsedRooms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
