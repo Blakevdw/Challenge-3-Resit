@@ -54,11 +54,11 @@ namespace API_Challenge_3_Resit.Controllers
 
 		// GET api/Class/{ClassCode}
 
-		public Class Get(int id)
+		public Class Get(string id)
 		{
 			SqlConnection conn = DBconnect.Connect();
 
-			string query = "select * from Class where ClassCode = " + id;
+			string query = "select * from Class where ClassCode = '" + id +"'";
 			Class output = new Class();
 			SqlCommand cmd;
 			SqlDataReader rdr;

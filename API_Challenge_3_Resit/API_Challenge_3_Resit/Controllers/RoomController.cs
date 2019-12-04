@@ -54,6 +54,66 @@ namespace API_Challenge_3_Resit.Controllers
 
 		}
 
-	}
+		// GET ALL api/Room/Unused
 
+
+
+		// GET ALL api/Room/Used
+
+
+
+		// GET ALL api/Room/Computers
+		public RoomWComputer Get(string id)
+		{
+			SqlConnection conn;
+			SqlCommand cmd;
+			SqlDataReader rdr;
+			RoomWComputer output = new RoomWComputer();
+			conn = DBconnect.Connect();
+			string qeury = "select* from Room Where id = '" + id + "'";
+			string qeuryBook = "select * from Computer where Room = " + id + "'"; 
+
+			try
+			{
+				conn.Open();
+
+				cmd = new SqlCommand(qeury, conn);
+
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read())
+				{
+					output = new RoomWComputer(Convert.ToString((rdr.GetValue(0).ToString())), Convert.ToInt32(rdr.GetValue(1)),
+						Convert.ToInt32(rdr.GetValue(2)));
+				}
+				rdr.Close();
+
+				cmd.CommandText = qeuryBook;
+
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read())
+				{
+					output.computers.Add(new Computer(Convert.ToInt32(rdr.GetValue(0).ToString()), Convert.ToInt32(rdr.GetValue(1)),
+						Convert.ToString(rdr.GetValue(2)), Convert.ToInt32(rdr.GetValue(3))));
+
+				}
+
+			}
+
+			catch (Exception e)
+			{
+				throw e;
+			}
+			finally
+			{
+				if (conn.State == System.Data.ConnectionState.Open)
+				{
+					conn.Close();
+				}
+			}
+			return output;
+		}
+	}
 }
+
