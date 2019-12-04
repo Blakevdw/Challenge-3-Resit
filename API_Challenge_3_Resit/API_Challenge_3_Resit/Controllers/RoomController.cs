@@ -54,13 +54,6 @@ namespace API_Challenge_3_Resit.Controllers
 
 		}
 
-		// GET ALL api/Room/Unused
-
-
-
-		// GET ALL api/Room/Used
-
-
 
 		// GET ALL api/Room/Computers
 		public RoomWComputer Get(string id)

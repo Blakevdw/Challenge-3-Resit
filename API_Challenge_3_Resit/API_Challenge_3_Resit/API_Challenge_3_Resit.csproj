@@ -159,6 +159,8 @@
     <Compile Include="Controllers\ComputerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\UnusedRoomController.cs" />
+    <Compile Include="Controllers\UsedRoomController.cs" />
     <Compile Include="DBadapter.cs" />
     <Compile Include="DBconnect.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,6 +170,8 @@
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomWComputer.cs" />
+    <Compile Include="Models\UnusedRoom.cs" />
+    <Compile Include="Models\UsedRooms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
